@@ -1,5 +1,17 @@
-# OmniSeg3D-GS
-3D Gaussian Splatting adapted version of OmniSeg3D (CVPR2024)
+# OmniSeg3D-GS: Gaussian-Splatting based OmniSeg3D (CVPR2024)
+
+### [Project Page](https://oceanying.github.io/OmniSeg3D/) | [Arxiv Paper](https://arxiv.org/abs/2311.11666)
+
+[OmniSeg3D: Omniversal 3D Segmentation via Hierarchical Contrastive Learning](https://arxiv.org/abs/2311.11666)  
+[Haiyang Ying](https://oceanying.github.io/)<sup>1</sup>, Yixuan Yin<sup>1</sup>, Jinzhi Zhang<sup>1</sup>, Fan Wang<sup>2</sup>, Tao Yu<sup>1</sup>, Ruqi Huang<sup>1</sup>, [Lu Fang](http://www.luvision.net/)<sup>1</sup>   
+<sup>1</sup>Tsinghua Univeristy &emsp; <sup>2</sup>Alibaba Group.  
+
+OmniSeg3D is a framework for multi-object, category-agnostic, and hierarchical segmentation in 3D, the [original implementation](https://github.com/THU-luvision/OmniSeg3D) is based on InstantNGP.
+
+However, OmniSeg3D is not restricted by specific 3D representation. In this repo, we present a guassian-splatting based OmniSeg3D, which enjoys interactive 3D segmentation in real-time. The segmented objects can be saved as .ply format for further visualization and manipulation.
+
+![image](https://github.com/OceanYing/OmniSeg3D-GS/assets/37448328/60cb1019-5734-4c25-a51e-6b43b2bcd4db)
+
 
 ## Installation
 We follow the original environment setting of [3D Guassian-Splatting (SIGGRAPH 2023)](https://github.com/graphdeco-inria/gaussian-splatting).
@@ -20,7 +32,7 @@ pip install submodules/simple-knn
 Please refer to the [guidance](https://github.com/THU-luvision/OmniSeg3D#hierarchical-representation-generation) in our [NeRF-based implementation of OmniSeg3D](https://github.com/THU-luvision/OmniSeg3D).
 
 ## Training:
-We train our models on a sinle NVIDIA RTX 3090 Ti GPU (24GB). Smaller scenes may require less memory. It typically requires less than 8GB for inference.
+We train our models on a sinle NVIDIA RTX 3090 Ti GPU (24GB). Smaller scenes may require less memory. Typically, inference requires less than 8GB memory.
 We utilize a two-stage training strategy. See script/train_omni_360.sh as an example.
 ```bash
 dataname=counter
