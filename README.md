@@ -29,7 +29,7 @@ pip install submodules/simple-knn
 ```
 
 ## Data Preparation:
-Please refer to the [guidance](https://github.com/THU-luvision/OmniSeg3D#hierarchical-representation-generation) in our [NeRF-based implementation of OmniSeg3D](https://github.com/THU-luvision/OmniSeg3D).
+We typically support data prepared as COLMAP format. Please refer to the [guidance](https://github.com/THU-luvision/OmniSeg3D#hierarchical-representation-generation) in our [NeRF-based implementation of OmniSeg3D](https://github.com/THU-luvision/OmniSeg3D).
 
 ## Training:
 We train our models on a sinle NVIDIA RTX 3090 Ti GPU (24GB). Smaller scenes may require less memory. Typically, inference requires less than 8GB memory.
@@ -93,3 +93,20 @@ Modify the path of the trained point cloud. Then run ``render_omni_gui.py``.
 - ``mid drag``: pan
 - ``right click``: choose point/objects
 
+
+## Acknowledgements
+Thanks for the following project for their valuable contributions:
+- [Gaussian-Splatting](https://github.com/graphdeco-inria/gaussian-splatting)
+- [Gaussian-Grouping](https://github.com/lkeab/gaussian-grouping)
+
+
+## Citation
+If you find this project helpful for your research, please consider citing the report and giving a ⭐.
+```BibTex
+@article{ying2023omniseg3d,
+  title={OmniSeg3D: Omniversal 3D Segmentation via Hierarchical Contrastive Learning},
+  author={Ying, Haiyang and Yin, Yixuan and Zhang, Jinzhi and Wang, Fan and Yu, Tao and Huang, Ruqi and Fang, Lu},
+  journal={arXiv preprint arXiv:2311.11666},
+  year={2023}
+}
+```
