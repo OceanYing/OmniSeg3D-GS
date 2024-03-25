@@ -1,16 +1,17 @@
 dataname=donuts
 gpu=2
+datapath=data/${dataname}
 
-# CUDA_VISIBLE_DEVICES=${gpu} python train.py \
-#      -s data/${dataname} \
-#      -r 1 -m output/${dataname}_omni_1/rgb \
-#      --config_file config/gaussian_dataset/train_rgb.json \
-#      --object_path sam \
-#      --ip 127.0.0.2
+CUDA_VISIBLE_DEVICES=${gpu} python train.py \
+     -s ${datapath} \
+     -r 1 -m output/${dataname}_omni_1/rgb \
+     --config_file config/gaussian_dataset/train_rgb.json \
+     --object_path sam \
+     --ip 127.0.0.2
 
 
 CUDA_VISIBLE_DEVICES=${gpu} python train.py \
-     -s data/${dataname} \
+     -s ${datapath} \
      -r 1 \
      -m output/${dataname}_omni_1/sem_hi \
      --config_file config/gaussian_dataset/train_sem.json \

@@ -1,5 +1,11 @@
-# from configs import CONFIG
-# from viewer.window import GaussianSplattingGUI
+# Copyright (C) 2024, OmniSeg3D: Omniversal 3D Segmentation via Hierarchical Contrastive Learning
+# https://github.com/OceanYing/OmniSeg3D-GS
+# All rights reserved.
+#
+# ------------------------------------------------------------------------
+# Modified from codes in Gaussian-Splatting, and Gaussian-Grouping
+# GRAPHDECO research group, https://team.inria.fr/graphdeco
+# Gaussian-Grouping research group, https://github.com/lkeab/gaussian-grouping
 
 import torch
 from scene import Scene

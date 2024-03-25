@@ -1,10 +1,11 @@
-# Copyright (C) 2023, Gaussian-Grouping
-# Gaussian-Grouping research group, https://github.com/lkeab/gaussian-grouping
+# Copyright (C) 2024, OmniSeg3D: Omniversal 3D Segmentation via Hierarchical Contrastive Learning
+# https://github.com/OceanYing/OmniSeg3D-GS
 # All rights reserved.
 #
 # ------------------------------------------------------------------------
-# Modified from codes in Gaussian-Splatting 
+# Modified from codes in Gaussian-Splatting, and Gaussian-Grouping
 # GRAPHDECO research group, https://team.inria.fr/graphdeco
+# Gaussian-Grouping research group, https://github.com/lkeab/gaussian-grouping
 
 import os
 import torch
@@ -124,23 +125,11 @@ def training(dataset: ModelParams, opt: OptimizationParams, pipe: PipelineParams
 
             loss = loss_sem + loss_norm
 
-            # logits = classifier(objects)
-            # loss_obj = cls_criterion(logits.unsqueeze(0), gt_obj.unsqueeze(0)).squeeze().mean()
-            # loss_obj = loss_obj / torch.log(torch.tensor(num_classes))  # normalize to (0,1)
-
-            # if (not omniseg_flag) and (iteration % opt.reg3d_interval == 0):
-            #     # regularize at certain intervals
-            #     logits3d = classifier(gaussians._objects_dc.permute(2,0,1))
-            #     prob_obj3d = torch.softmax(logits3d,dim=0).squeeze().permute(1,0)
-            #     loss_obj_3d = loss_cls_3d(gaussians._xyz.squeeze().detach(), prob_obj3d, opt.reg3d_k, opt.reg3d_lambda_val, opt.reg3d_max_points, opt.reg3d_sample_size)
-            #     loss_obj = (1.0 - opt.lambda_dssim) * Ll1 + opt.lambda_dssim * (1.0 - ssim(image, gt_image)) + loss_obj + loss_obj_3d
         else:
             # RGB Loss
             gt_image = viewpoint_cam.original_image.cuda()
             Ll1 = l1_loss(image, gt_image)
             loss = (1.0 - opt.lambda_dssim) * Ll1 + opt.lambda_dssim * (1.0 - ssim(image, gt_image))
-        
-        # loss = (1.0 - opt.lambda_dssim) * Ll1 + opt.lambda_dssim * (1.0 - ssim(image, gt_image)) + loss_obj
 
         loss.backward()
         iter_end.record()
@@ -150,7 +139,6 @@ def training(dataset: ModelParams, opt: OptimizationParams, pipe: PipelineParams
             ema_loss_for_log = 0.4 * loss.item() + 0.6 * ema_loss_for_log
             if iteration % 10 == 0:
                 if sem_only_flag:
-                    # progress_bar.set_postfix({"ContraLoss": f"{loss_obj_dict['semantic_render'][0]:.{7}f}", "SemReg_Loss": f"{loss_obj_dict['sam_norm_loss']:.{7}f}"})
                     progress_bar.set_postfix({"ContraLoss": f"{loss_obj_dict['semantic_render'][0]:.{7}f}", "SemReg_Loss": f"{loss_norm:.{7}f}"})
                 else:
                     progress_bar.set_postfix({"Loss": f"{ema_loss_for_log:.{7}f}"})
@@ -163,8 +151,6 @@ def training(dataset: ModelParams, opt: OptimizationParams, pipe: PipelineParams
             if (iteration in saving_iterations):
                 print("\n[ITER {}] Saving Gaussians".format(iteration))
                 scene.save(iteration)
-                if not omniseg_flag:
-                    torch.save(classifier.state_dict(), os.path.join(scene.model_path, "point_cloud/iteration_{}".format(iteration),'classifier.pth'))
 
             # Densification
             if iteration < opt.densify_until_iter:

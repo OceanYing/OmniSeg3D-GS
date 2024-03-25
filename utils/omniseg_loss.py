@@ -1,3 +1,7 @@
+# Copyright (C) 2024, OmniSeg3D: Omniversal 3D Segmentation via Hierarchical Contrastive Learning
+# https://github.com/OceanYing/OmniSeg3D-GS
+# All rights reserved.
+
 import torch
 from torch import nn
 
