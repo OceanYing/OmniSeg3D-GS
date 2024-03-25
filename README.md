@@ -74,6 +74,11 @@ bash script/train_omni_360.sh
 
 Modify the path of the trained point cloud. Then run ``render_omni_gui.py``.
 
+![Screenshot 2024-03-25 21:20:50 - omniseg3dgs](https://github.com/OceanYing/OmniSeg3D-GS/assets/37448328/47912c9d-16ac-48fc-9d05-23bd1f83a333)
+![Screenshot 2024-03-25 21:21:08 - omniseg3dgs](https://github.com/OceanYing/OmniSeg3D-GS/assets/37448328/60c4a026-77ed-4dc2-85e2-587ca134e2a2)
+![Screenshot 2024-03-25 21:21:54 - omniseg3dgs](https://github.com/OceanYing/OmniSeg3D-GS/assets/37448328/9e0b0898-0602-41c6-a581-c6d3197e1eed)
+
+
 ### GUI options:
 - ``mode option``: RGB, score map, and semantic map (you can visualize the consistent global semantic feature).
 - ``click mode``: select object of interest
