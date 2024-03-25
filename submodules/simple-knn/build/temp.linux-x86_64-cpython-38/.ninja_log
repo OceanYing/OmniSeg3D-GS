@@ -1,0 +1,4 @@
+# ninja log v5
+1	9366	1706077049096198141	/data/haiyang/projects/gaussian-grouping/submodules/simple-knn/build/temp.linux-x86_64-cpython-38/simple_knn.o	487894a72f535077
+0	16130	1706077055840215399	/data/haiyang/projects/gaussian-grouping/submodules/simple-knn/build/temp.linux-x86_64-cpython-38/ext.o	a0c4b090bfbece60
+1	34527	1706077074248262394	/data/haiyang/projects/gaussian-grouping/submodules/simple-knn/build/temp.linux-x86_64-cpython-38/spatial.o	3b5a9c5fd2e5836c
