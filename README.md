@@ -28,8 +28,17 @@ pip install submodules/diff-gaussian-rasterization
 pip install submodules/simple-knn
 ```
 
+Install `SAM` for 2D segmentation:
+```bash
+git clone https://github.com/facebookresearch/segment-anything.git
+cd segment-anything
+pip install -e .
+mkdir sam_ckpt; cd sam_ckpt
+wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+```
+
 ## Data Preparation:
-Please refer to the [guidance](https://github.com/THU-luvision/OmniSeg3D#hierarchical-representation-generation) in our [NeRF-based implementation of OmniSeg3D](https://github.com/THU-luvision/OmniSeg3D).
+We typically support data prepared as COLMAP format. For more details, please refer to the [guidance](https://github.com/THU-luvision/OmniSeg3D#hierarchical-representation-generation) in our [NeRF-based implementation of OmniSeg3D](https://github.com/THU-luvision/OmniSeg3D).
 
 ## Training:
 We train our models on a sinle NVIDIA RTX 3090 Ti GPU (24GB). Smaller scenes may require less memory. Typically, inference requires less than 8GB memory.
@@ -74,6 +83,11 @@ bash script/train_omni_360.sh
 
 Modify the path of the trained point cloud. Then run ``render_omni_gui.py``.
 
+![Screenshot 2024-03-25 21:20:50 - omniseg3dgs](https://github.com/OceanYing/OmniSeg3D-GS/assets/37448328/47912c9d-16ac-48fc-9d05-23bd1f83a333)
+![Screenshot 2024-03-25 21:21:08 - omniseg3dgs](https://github.com/OceanYing/OmniSeg3D-GS/assets/37448328/60c4a026-77ed-4dc2-85e2-587ca134e2a2)
+![Screenshot 2024-03-25 21:21:54 - omniseg3dgs](https://github.com/OceanYing/OmniSeg3D-GS/assets/37448328/9e0b0898-0602-41c6-a581-c6d3197e1eed)
+
+
 ### GUI options:
 - ``mode option``: RGB, score map, and semantic map (you can visualize the consistent global semantic feature).
 - ``click mode``: select object of interest
@@ -88,3 +102,20 @@ Modify the path of the trained point cloud. Then run ``render_omni_gui.py``.
 - ``mid drag``: pan
 - ``right click``: choose point/objects
 
+
+## Acknowledgements
+Thanks for the following project for their valuable contributions:
+- [Gaussian-Splatting](https://github.com/graphdeco-inria/gaussian-splatting)
+- [Gaussian-Grouping](https://github.com/lkeab/gaussian-grouping)
+
+
+## Citation
+If you find this project helpful for your research, please consider citing the report and giving a ⭐.
+```BibTex
+@article{ying2023omniseg3d,
+  title={OmniSeg3D: Omniversal 3D Segmentation via Hierarchical Contrastive Learning},
+  author={Ying, Haiyang and Yin, Yixuan and Zhang, Jinzhi and Wang, Fan and Yu, Tao and Huang, Ruqi and Fang, Lu},
+  journal={arXiv preprint arXiv:2311.11666},
+  year={2023}
+}
+```
