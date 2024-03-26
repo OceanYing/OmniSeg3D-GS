@@ -28,8 +28,17 @@ pip install submodules/diff-gaussian-rasterization
 pip install submodules/simple-knn
 ```
 
+Install `SAM` for 2D segmentation:
+```bash
+git clone https://github.com/facebookresearch/segment-anything.git
+cd segment-anything
+pip install -e .
+mkdir sam_ckpt; cd sam_ckpt
+wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+```
+
 ## Data Preparation:
-We typically support data prepared as COLMAP format. Please refer to the [guidance](https://github.com/THU-luvision/OmniSeg3D#hierarchical-representation-generation) in our [NeRF-based implementation of OmniSeg3D](https://github.com/THU-luvision/OmniSeg3D).
+We typically support data prepared as COLMAP format. For more details, please refer to the [guidance](https://github.com/THU-luvision/OmniSeg3D#hierarchical-representation-generation) in our [NeRF-based implementation of OmniSeg3D](https://github.com/THU-luvision/OmniSeg3D).
 
 ## Training:
 We train our models on a sinle NVIDIA RTX 3090 Ti GPU (24GB). Smaller scenes may require less memory. Typically, inference requires less than 8GB memory.
