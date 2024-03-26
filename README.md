@@ -40,6 +40,18 @@ wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
 ## Data Preparation:
 We typically support data prepared as COLMAP format. For more details, please refer to the [guidance](https://github.com/THU-luvision/OmniSeg3D#hierarchical-representation-generation) in our [NeRF-based implementation of OmniSeg3D](https://github.com/THU-luvision/OmniSeg3D).
 
+### Hierarchical Representation Generation
+Run the sam model to get the hierarchical representation files.
+```bash
+python run_sam.py --ckpt_path {SAM_CKPT_PATH} --file_path {IMAGE_FOLDER} --gpu_id {GPU_ID}
+```
+After running, you will get three folders `sam`, `masks`, `patches`:
+* `sam`: stores the hierarchical representation as ".npz" files
+* `masks` and `patches`: used for visualization or masks quaility evaluation, not needed during training.
+
+Ideal `masks` should include object-level masks and `patches` should contain part-level masks. We basically use the default parameter setting for SAM, but you can tune the parameters for customized datasets.
+
+
 ## Training:
 We train our models on a sinle NVIDIA RTX 3090 Ti GPU (24GB). Smaller scenes may require less memory. Typically, inference requires less than 8GB memory.
 We utilize a two-stage training strategy. See script/train_omni_360.sh as an example.
