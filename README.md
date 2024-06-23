@@ -43,7 +43,7 @@ We typically support data prepared as COLMAP format. For more details, please re
 ### Hierarchical Representation Generation
 Run the sam model to get the hierarchical representation files.
 ```bash
-python run_sam.py --ckpt_path {SAM_CKPT_PATH} --file_path {IMAGE_FOLDER} --gpu_id {GPU_ID}
+python run_sam.py --ckpt_path {SAM_CKPT_PATH} --file_path {IMAGE_FOLDER}
 ```
 After running, you will get three folders `sam`, `masks`, `patches`:
 * `sam`: stores the hierarchical representation as ".npz" files
